@@ -1,0 +1,128 @@
+Engine: Cowpea
+InputVariable: soil_moisture
+  enabled: true
+  range: 0.000 1.000
+  lock-range: false
+  term: low Triangle 0.000 0.250 0.500
+  term: medium Triangle 0.250 0.500 1.000
+  term: high Triangle 0.500 1.000 1.000
+InputVariable: temperature
+  enabled: true
+  range: 0.000 1.000
+  lock-range: false
+  term: low Triangle 0.250 0.500 1.000
+  term: medium Triangle 0.500 1.000 1.000
+  term: high Triangle 0.000 0.250 0.500
+InputVariable: fertilizer
+  enabled: true
+  range: 0.000 1.000
+  lock-range: false
+  term: low Triangle 0.250 0.500 1.000
+  term: medium Triangle 0.500 1.000 1.000
+  term: high Triangle 0.000 0.250 0.500
+InputVariable: pest_infection
+  enabled: true
+  range: 0.000 1.000
+  lock-range: false
+  term: low Triangle 0.500 1.000 1.000
+  term: medium Triangle 0.250 0.500 1.000
+  term: high Triangle 0.000 0.250 0.500
+OutputVariable: prediction
+  enabled: true
+  range: 0.000 1.000
+  lock-range: false
+  aggregation: Maximum
+  defuzzifier: Centroid 100
+  default: nan
+  lock-previous: false
+  term: low_yield Triangle 0.000 0.000 0.250
+  term: average_yield Triangle 0.250 0.500 0.750
+  term: high_yield Triangle 0.500 0.780 1.000
+RuleBlock: ruleBlock
+  enabled: true
+  conjunction: Minimum
+  disjunction: Maximum
+  implication: AlgebraicProduct
+  activation: General
+  rule: if soil_moisture is high and temperature is high and fertilizer is high and pest_infection is high then prediction is low_yield 
+  rule: if soil_moisture is high and temperature is high and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is high and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is medium and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is high and pest_infection is high then prediction is average_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is high and fertilizer is low and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is high and pest_infection is high then prediction is average_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is medium and pest_infection is medium then prediction is high_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is medium and fertilizer is low and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is high and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is high and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is medium and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is high and temperature is low and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is high and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is high and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is high and pest_infection is low then prediction is high_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is medium and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is medium and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is medium and pest_infection is low then prediction is high_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is low and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is low and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is high and fertilizer is low and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is high and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is high and pest_infection is low then prediction is high_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is medium and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is medium and pest_infection is low then prediction is high_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is low and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is medium and fertilizer is low and pest_infection is low then prediction is high_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is high and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is medium and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is medium and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is medium and temperature is low and fertilizer is low and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is high and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is medium and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is medium and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is medium and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is low and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is high and pest_infection is medium then prediction is average_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is medium and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is medium and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is low and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is medium and fertilizer is low and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is high and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is high and fertilizer is low and pest_infection is low then prediction is average_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is medium and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is medium and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is medium and pest_infection is low then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is low and pest_infection is high then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is high and pest_infection is medium then prediction is low_yield
+  rule: if soil_moisture is low and temperature is low and fertilizer is low and pest_infection is low then prediction is low_yield
